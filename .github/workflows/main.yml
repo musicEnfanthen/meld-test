@@ -54,6 +54,10 @@ jobs:
       working-directory: ${{ env.MELD_HELLO_DIR }}/hello-meld-3
       run: npm ci
     
+    - name: Check node modules
+      working-directory: ${{ env.MELD_HELLO_DIR }}/hello-meld-3
+      run: ls -al node_modules/meld-clients-core
+    
 #    - name: Start
 #      working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
 #      run: npm start & npx wait-on http://localhost:8080
