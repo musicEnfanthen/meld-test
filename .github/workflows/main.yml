@@ -51,7 +51,7 @@ jobs:
       run: npm ci
     
     - name: Install dependencies of MELD_HELLO
-      working-directory: ${{ env.MELD_HELLO_REPO }}
+      working-directory: ${{ env.MELD_HELLO_DIR }}
       run: npm ci
     
 #    - name: Start
