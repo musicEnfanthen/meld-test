@@ -63,11 +63,11 @@ jobs:
       run: mv node_modules another_node_modules
     
     - name: Link node_modules from MELD_CLIENTS_CORE to MELD_HELLO
-      working-directory: ${{ env.MELD_HELLO_DIR }}
+      working-directory: ${{ env.MELD_HELLO_DIR }}/hello-meld-3  
       run: npm link meld-clients-core
     
     - name: Check for node-modules
-      working-directory: ${{ env.MELD_HELLO_DIR }}
+      working-directory: ${{ env.MELD_HELLO_DIR }}/hello-meld-3  
       run: ls -al node_modules/meld-clients-core  
     
     - name: Start
