@@ -32,8 +32,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    
+ 
+    - name: Verify
+      run: ls -Rl
+ 
     - name: Install dependencies
+      working-directory: ${{ env.MELD_DIR }}
       run: npm ci
     
 #    - name: Start
