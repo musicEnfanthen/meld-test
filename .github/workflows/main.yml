@@ -53,13 +53,27 @@ jobs:
     - name: Install dependencies of MELD_HELLO
       working-directory: ${{ env.MELD_HELLO_DIR }}/hello-meld-3
       run: npm ci
+  
+    - name: Link node_modules of MELD_CLIENTS_CORE
+      working-directory: ${{ env.MELD_CLIENTS_CORE_DIR }}
+      run: npm link
+  
+    - name: Remove node_modules of MELD_CLIENTS_CORE
+      working-directory: ${{ env.MELD_CLIENTS_CORE_DIR }}
+      run: mv node_modules another_node_modules
     
-    - name: Check node modules
-      working-directory: ${{ env.MELD_HELLO_DIR }}/hello-meld-3
+    - name: Link node_modules from MELD_CLIENTS_CORE to MELD_HELLO
+      working-directory: ${{ env.MELD_HELLO_DIR }}
+      run: npm link meld-clients-core
+    
+    - name: Check for node-modules
       run: ls -al node_modules/meld-clients-core
     
+      
+    
+    
 #    - name: Start
-#      working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
+#      working-directory: ${{ env.MELD_DIR }}/hello-meld-3  
 #      run: npm start & npx wait-on http://localhost:8080
 #      env:
 #        CI: true
