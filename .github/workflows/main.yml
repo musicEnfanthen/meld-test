@@ -67,6 +67,7 @@ jobs:
       run: npm link meld-clients-core
     
     - name: Check for node-modules
+      working-directory: ${{ env.MELD_HELLO_DIR }}
       run: ls -al node_modules/meld-clients-core
     
       
