@@ -34,7 +34,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     
     - name: Install dependencies
-      working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
       run: npm ci
     
 #    - name: Start
