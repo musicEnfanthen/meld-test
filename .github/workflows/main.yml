@@ -39,5 +39,7 @@ jobs:
     
     - name: Start
       working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
-      run: npm start
+      run: npm start & npx wait-on http://localhost:8080
+      env:
+        CI: true
 
