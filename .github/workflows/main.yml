@@ -1,0 +1,43 @@
+name: Node setup
+
+on:
+  workflow_dispatch: # trigger manually
+
+# globals
+env:
+ # meld
+  MELD_REPO: oerc-music/meld-hello-meld
+  MELD_BRANCH: main
+  MELD_DIR: meld
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Checkout MELD_REPO into MELD_DIR
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.MELD_REPO }}
+        ref: ${{ env.MELD_BRANCH }}
+        path: ${{ env.MELD_DIR }}
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Install dependencies
+      working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
+      run: npm install
+    
+    - run: npm run build --if-present
+    - run: npm test
+
+
