@@ -6,8 +6,8 @@ on:
 # globals
 env:
  # meld
-  MELD_REPO: oerc-music/meld-hello-meld
-  MELD_BRANCH: main
+  MELD_REPO: oerc-music/meld-clients-core
+  MELD_BRANCH: unblacking-newdeps
   MELD_DIR: meld
 
 jobs:
@@ -37,9 +37,9 @@ jobs:
       working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
       run: npm ci
     
-    - name: Start
-      working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
-      run: npm start & npx wait-on http://localhost:8080
-      env:
-        CI: true
+#    - name: Start
+#      working-directory: ${{ env.MELD_DIR }}/hello-meld-2  
+#      run: npm start & npx wait-on http://localhost:8080
+#      env:
+#        CI: true
 
